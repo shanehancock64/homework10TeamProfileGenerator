@@ -6,7 +6,6 @@ const createHMTL = require('./createHTML');
 const Manager = require('./lib/manager')
 const Engineer = require('./lib/engineer')
 const Intern = require('./lib/intern')
-const Employee = require('./lib/employee')
 const employeeArray = [];
 // Add roles of Employee's 
 const addEmployee = () => {
@@ -73,10 +72,21 @@ const addEmployee = () => {
       employee = new Intern (employeeName, id, email, school); 
       console.log(employee);
     }
+
+    employeeArray.push(employee);
+    if (confirmAddNewEmployee === true) {
+      return addEmployee();
+    } else {
+      return employeeArray;
+    }
   })
-}
+};
 
 
 addEmployee()
+ .then(employeeArray => {
+   return createHMTL(employeeArray);
+ })
+
 
 

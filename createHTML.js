@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
+
 // create Manager card
 const generateManager = function (manager) {
   return `
@@ -98,7 +99,7 @@ return`
 }
 
 // push array to page 
-generateHTML = (data) => {
+createHTML = (data) => {
 
   // array for cards 
   pageArray = []; 
@@ -141,4 +142,4 @@ generateHTML = (data) => {
 }
 
 // export to index
-module.exports = generateHTML; 
+module.exports = createHTML; 
