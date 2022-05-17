@@ -7,67 +7,76 @@ const Manager = require('./lib/manager')
 const Engineer = require('./lib/engineer')
 const Intern = require('./lib/intern')
 const Employee = require('./lib/employee')
-const teamArray = [];
-// Add Manager Role 
-const addManager = () => {
+const employeeArray = [];
+// Add roles of Employee's 
+const addEmployee = () => {
   return inquirer.prompt ([
     {
-    type: 'input',
-    name: 'Name',
-    message: 'Name of Team Manager',
+      type: 'list',
+      name: 'role',
+      message: 'Choose Employee Roles',
+      choices: ['Manager', 'Engineer', 'Intern'],
     },
     {
       type: 'input',
-      name: 'ID',
-      message: 'Enter Employee ID of Team Manager',
+      name: 'employeeName',
+      message: "What is the employee's name?",
     },
     {
       type: 'input',
-      name: 'Employee Email Address',
-      message: 'Please enter email address of Team Manager',
+      name: 'id',
+      message: "Enter employee ID",
     },
     {
       type: 'input',
-      name: 'Office Number',
-      message: 'Please enter manager office number',
-    }
-  ]) 
-   .then(managerInput => {
-  const  { name, id, email, officeNumber } = managerInput; 
-  const manager = new Manager (name, id, email, officeNumber);
+      name: 'email',
+      message: "Enter employee email address",
+    },
+    {
+      type: 'input',
+      name: 'officeNumber',
+      message: "Enter Manager's Office Number",
+      when: (input) => input.role === 'Manager',
+    },
+    {
+      type: 'input',
+      name: 'github',
+      message: "Enter Employee Github Account",
+      when: (input) => input.role === 'Engineer',
+    },
+    {
+      type: 'input',
+      name: 'school',
+      message: "Enter Intern's current School Name",
+      when: (input) => input.role === 'Intern',
+    },
+    {
+      type: 'confirm',
+      name: 'ConfirmAddNewEmployee',
+      message: "Add more employee's?",
+      default: false
+    },
 
-  teamArray.push(manager); 
-  console.log(manager); 
-})
-};
-
-
-
-
-
-// function addEmployee() {
-//   inquirer .prompt([{
-//       type: "input",
-//       message: "What is your name?",
-//       name: "name",
-//   },
-//   {
-//       type: "input",
-//       message: "What is your ID?",
-//       name: "id",
-//   }, {
-//       type: "input",
-//       message: "What is your email address?",
-//       name: "email",
-//   },
-//   {
-//       type: "list",
-//       message: "What is your role?",
-//       name: "role",
-//       choices: ["Engineer", "Intern", "Manager"]
-//   }
-//   ])
-  
-  
+  ])
+  .then (employeeInput => {
+    let {role, employeeName, id, email, officeNumber, github, school, confirmAddNewEmployee} = employeeInput;
+    let employee; 
+    if (role === 'Manager') {
+      employee = new Manager (employeeName, id, email, officeNumber);
+      console.log(employee);
     
-// }
+    } else if (role === 'Engineer') {
+      employee = new Engineer (employeeName, id, email, github);
+      console.log(employee);
+    
+    } else if (role === 'Intern') {
+      employee = new Intern (employeeName, id, email, school); 
+      console.log(employee);
+    }
+  })
+}
+
+
+addEmployee()
+
+
