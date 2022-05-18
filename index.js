@@ -1,3 +1,4 @@
+// const generateHTML = require('./generateHTML')
 const fs = require('fs');
 const path = require('path');
 const inquirer = require('inquirer');
@@ -87,13 +88,26 @@ const addEmployee = () => {
   
 };
 
+// const writeFile = data => {
+//   fs.writeFile('index.html', data, err => {
+//       if (err) {
+//           console.log(err);
+//           return;
+//       } else {
+//           console.log("index.html created successfully!")
+//       }
+//   })
+// }; 
+// function to generate HTML page file using file system 
 const writeFile = data => {
   fs.writeFile('index.html', data, err => {
+      // if there is an error 
       if (err) {
           console.log(err);
           return;
+      // when the profile has been created 
       } else {
-          console.log("index.html created successfully!")
+          console.log("Your team profile has been successfully created! Please check out the index.html")
       }
   })
 }; 
@@ -104,11 +118,22 @@ addEmployee()
 })
 .then(pageHTML => {
   return writeFile(pageHTML);
-
 })
 .catch(err => {
 console.log(err);
 });
+
+// addEmployee()
+// .then(employeeArray => {
+//   return createHTML(employeeArray);
+// })
+// .then(pageHTML => {
+//   return writeFile(pageHTML);
+
+// })
+// .catch(err => {
+// console.log(err);
+// });
 
 
 

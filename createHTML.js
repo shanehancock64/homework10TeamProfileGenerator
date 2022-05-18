@@ -1,7 +1,4 @@
-const index = require('./index');
-const Manager = require('./lib/manager')
-const Engineer = require('./lib/engineer')
-const Intern = require('./lib/intern')
+
 // Create employee cards
 
 const managerCard = function (manager) {
@@ -56,27 +53,28 @@ const internCard = function (intern) {
     </div>
 </div>
     `
-}
+};
 
 createHTML = (data) => {
-   pageArray = [];
+  
+    pageArray = []
 
 
     for(let i = 0; i < data.length; i++) {
         const employee = data[i];
         const role = employee.getRole();
     
-    if (role === 'manager') {
+    if (role === 'Manager') {
         const createManager = managerCard(employee);
         pageArray.push(createManager);
     }
 
-    if (role === 'engineer') {
+    if (role === 'Engineer') {
         const createEngineer = engineerCard(employee);
         pageArray.push(createEngineer);
     }
 
-    if (role === 'intern') {
+    if (role === 'Intern') {
         const createIntern = internCard(employee);
         pageArray.push(createIntern);
     }
