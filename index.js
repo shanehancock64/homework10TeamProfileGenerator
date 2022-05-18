@@ -62,18 +62,20 @@ const addEmployee = () => {
     let employee; 
     if (role === 'Manager') {
       employee = new Manager (employeeName, id, email, officeNumber);
-      console.log(employee);
+      // console.log(employee);
     
     } else if (role === 'Engineer') {
       employee = new Engineer (employeeName, id, email, github);
-      console.log(employee);
+      // console.log(employee);
     
     } else if (role === 'Intern') {
       employee = new Intern (employeeName, id, email, school); 
-      console.log(employee);
+      // console.log(employee);
     }
 
     employeeArray.push(employee);
+    
+    
     if (confirmAddNewEmployee === true) {
       return addEmployee();
     } else {
@@ -82,11 +84,39 @@ const addEmployee = () => {
   })
 };
 
+// function to generate HTML page file using file system 
+const writeFile = data => {
+  fs.writeFile('index.html', data, err => {
+      // if there is an error 
+      if (err) {
+          console.log(err);
+          return;
+      // when the profile has been created 
+      } else {
+          console.log("index.html created successfully!")
+      }
+  })
+}; 
 
 addEmployee()
- .then(employeeArray => {
-   return createHMTL(employeeArray);
- })
+.then(employeeArray => {
+  return createHTML(employeeArray);
+})
+.then(pageHTML => {
+  return writeFile(pageHTML);
+})
+.catch(err => {
+console.log(err);
+});
+
+
+
+
+
+
+
+
+
 
 
 
