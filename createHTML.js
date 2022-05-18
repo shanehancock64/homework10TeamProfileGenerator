@@ -63,14 +63,23 @@ createHTML = (data) => {
     
     if (role === 'manager') {
         const createManager = managerCard(employee);
+        dataArray.push(createManager);
     }
 
     if (role === 'engineer') {
         const createEngineer = engineerCard(employee);
+        dataArray.push(createEngineer);
     }
 
     if (role === 'intern') {
         const createIntern = internCard(employee);
+        dataArray.push(createIntern);
     }
-}}
+ }
 
+}
+
+const employeeCards = dataArray.join('')
+
+
+module.exports = createHTML;
