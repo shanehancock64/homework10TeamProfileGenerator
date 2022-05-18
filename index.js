@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const inquirer = require('inquirer');
-const createHMTL = require('./createHTML');
+const createHTML = require('./createHTML');
 // Employee roles
 const Manager = require('./lib/manager')
 const Engineer = require('./lib/engineer')
@@ -85,16 +85,15 @@ const addEmployee = () => {
     
     
   })
+  
 };
 
-// function to generate HTML page file using file system 
 const writeFile = data => {
   fs.writeFile('index.html', data, err => {
-      // if there is an error 
       if (err) {
           console.log(err);
           return;
-      // when the profile has been created 
+    
       } else {
           console.log("index.html created successfully!")
       }
@@ -107,6 +106,7 @@ addEmployee()
 })
 .then(pageHTML => {
   return writeFile(pageHTML);
+
 })
 .catch(err => {
 console.log(err);
