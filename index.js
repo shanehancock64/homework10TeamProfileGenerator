@@ -51,14 +51,21 @@ const addEmployee = () => {
     },
     {
       type: 'confirm',
-      name: 'ConfirmAddNewEmployee',
+      name: 'confirmAddNewEmployee',
       message: "Add more employee's?",
       default: false
+      
     },
 
   ])
   .then (employeeInput => {
     let {role, employeeName, id, email, officeNumber, github, school, confirmAddNewEmployee} = employeeInput;
+    
+    if (confirmAddNewEmployee === true) {
+      return addEmployee();
+    } else {
+      return employeeArray;
+    }
     let employee; 
     if (role === 'Manager') {
       employee = new Manager (employeeName, id, email, officeNumber);
@@ -76,11 +83,7 @@ const addEmployee = () => {
     employeeArray.push(employee);
     
     
-    if (confirmAddNewEmployee === true) {
-      return addEmployee();
-    } else {
-      return employeeArray;
-    }
+    
   })
 };
 

@@ -16,7 +16,7 @@ test('can set name to employee object', ()=> {
 
 test('can set id to employee object', ()=> {
   const employeeId = 1;
-  const employee = new Employee('Shane', 5);
+  const employee = new Employee('Shane', 1);
   expect(employee.id).toBe(employeeId);
 })
 
