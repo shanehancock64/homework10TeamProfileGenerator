@@ -1,3 +1,4 @@
+const index = require('./index');
 // Create employee cards
 
 const managerCard = function (manager) {
@@ -53,4 +54,23 @@ const internCard = function (intern) {
 </div>
     `
 }
+
+createHTML = (data) => {
+    dataArray = []
+    for(let i = 0; i < data.length; i++) {
+        const employee = data[i];
+        const role = employee.getRole();
+    
+    if (role === 'manager') {
+        const createManager = managerCard(employee);
+    }
+
+    if (role === 'engineer') {
+        const createEngineer = engineerCard(employee);
+    }
+
+    if (role === 'intern') {
+        const createIntern = internCard(employee);
+    }
+}}
 

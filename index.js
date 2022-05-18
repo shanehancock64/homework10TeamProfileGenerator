@@ -60,13 +60,8 @@ const addEmployee = () => {
   ])
   .then (employeeInput => {
     let {role, employeeName, id, email, officeNumber, github, school, confirmAddNewEmployee} = employeeInput;
-    
-    if (confirmAddNewEmployee === true) {
-      return addEmployee();
-    } else {
-      return employeeArray;
-    }
-    let employee; 
+    let employee;
+
     if (role === 'Manager') {
       employee = new Manager (employeeName, id, email, officeNumber);
       // console.log(employee);
@@ -79,9 +74,13 @@ const addEmployee = () => {
       employee = new Intern (employeeName, id, email, school); 
       // console.log(employee);
     }
-
     employeeArray.push(employee);
     
+    if (confirmAddNewEmployee === true) {
+      return addEmployee();
+    } else {
+      return employeeArray;
+    }
     
     
   })
@@ -93,7 +92,6 @@ const writeFile = data => {
       if (err) {
           console.log(err);
           return;
-    
       } else {
           console.log("index.html created successfully!")
       }
