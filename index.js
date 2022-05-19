@@ -1,8 +1,7 @@
-// const generateHTML = require('./generateHTML')
 const fs = require('fs');
 const path = require('path');
 const inquirer = require('inquirer');
-const createHTML = require('./createHTML');
+const createHTML = require('./src/createHTML');
 // Employee roles
 const Manager = require('./lib/manager')
 const Engineer = require('./lib/engineer')
@@ -90,7 +89,7 @@ const addEmployee = () => {
 
 
 const writeFile = data => {
-  fs.writeFile('index.html', data, err => {
+  fs.writeFile('./dist/index.html', data, err => {
       // if there is an error 
       if (err) {
           console.log(err);
