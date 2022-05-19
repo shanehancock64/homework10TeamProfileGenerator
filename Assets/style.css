@@ -1,3 +1,31 @@
 #navbar {
-  background-color: rgb(255, 46, 81);
+  background-color: rgb(248, 37, 72);
+  margin-bottom: 100px;
+  
+}
+
+#navbar-text {
+  font-size: 60px;
+  font-weight: 700;
+ 
+}
+
+#C {
+  box-shadow: 5px 5px 5px grey;
+  border-radius: 10px;
+
+}
+
+.card-header {
+  background-color: rgba(63, 63, 255, 0.863);
+  color: white;
+  
+}
+
+.container {
+  
+}
+
+p {
+  font-weight: 700;
 }
